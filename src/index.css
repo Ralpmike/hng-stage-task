@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.button-primary {
+  @apply bg-[#008042] rounded-[8px] px-8 py-6 hover:bg-[#00522A] hover:border-[2px] hover:border-b-[#001B0E];
+}
+
+.button-secondary {
+  @apply bg-[#004824] rounded-[8px] px-8 py-4 hover:bg-[#00522A] hover:border-[2px] hover:border-b-[#001B0E];
+}
+.sub-h2-style {
+  @apply font-my-custom-font-head text-[24px] md:text-[2rem] text-secondary_black tracking-wide;
+}
+
+.p-caption-style {
+  @apply font-krub-font text-[14px] md:text-[16px] font-normal text-primary_black;
+}
+
+.price-style {
+  @apply font-krub-font text-[20px]  font-medium text-price_black;
+}
+
+.product-caption {
+  @apply font-normal text-[20px] tracking-wide leading-6 font-krub-font;
+}
+
+.socials {
+  @apply border-[1px] border-[#ECEFF3] p-2 rounded-full w-9 h-fit;
+}
+
+.label-footer {
+  @apply text-white text-[18px] font-medium  leading-6 font-my-custom-font-head;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+.animate-slide {
+  animation: slide 10s linear infinite;
+}
+
+.subgrid {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+}
+
+.grid-cont {
+  grid-template-columns: auto auto auto;
+}
+
+.font-20 {
+  font-size: 1.25rem;
+}
+
+.font-32 {
+  font-size: 2rem;
+}
+
+.custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 1.2rem;
+}
+.custom-select option:first-child {
+  display: none;
+}
+/* a {
+  @apply px-[12px] py-[8px] rounded-lg;
+} */
+
+/* .active {
+  @apply bg-[#A7D0A6]  px-[8px] py-[4px] rounded-lg text-[14px];
+} */
+
+/* a.active {
+  background-color: #a7d0a6;
+} */
