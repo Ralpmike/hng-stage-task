@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 export default function SectionOne() {
   return (
     <div className="flex flex-col my-0  text-center px-5 md:px-[64px] items-center justify-center md:text-center gap-5 md:my-[3rem]">
@@ -15,10 +17,13 @@ export default function SectionOne() {
         and consideration for the environment.
       </p>
 
-      <button className="text-[#E9FFE7] text-[14px] mt-5 font-krub-font md:text-[18px] button-primary">
+      <a
+        href="#popular"
+        className="text-[#E9FFE7] text-[14px] mt-5 font-krub-font md:text-[18px] button-primary"
+      >
         {" "}
         Discover Eco-Friendly Products
-      </button>
+      </a>
     </div>
   );
 }

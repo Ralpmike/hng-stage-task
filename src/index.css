@@ -22,7 +22,7 @@
 }
 
 .product-caption {
-  @apply font-normal text-[20px] tracking-wide leading-6 font-krub-font;
+  @apply font-normal text-[18px] tracking-wide leading-6 font-krub-font;
 }
 
 .socials {
@@ -40,6 +40,10 @@
   100% {
     transform: translateX(-200%);
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .animate-slide {

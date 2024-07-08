@@ -10,14 +10,13 @@ import { FaHeart } from "react-icons/fa";
 export default function PopularProducts() {
   // const [favorite, setFavorite] = useState(false);
   return (
-    <div className="px-5 md:px-12">
+    <div className="px-5 md:px-12" id="popular">
       <div className="py-12">
         <h2 className="sub-h2-style text-center">
-          Browse Through Our Collections
+          Popular best selling products
         </h2>
         <p className="p-caption-style text-center mt-3">
-          We have different categories of Eco-friendly products to cater and
-          suit every of your needs and wants.
+          Browse through some of the most purchased eco-friendly products
         </p>
       </div>
 
@@ -56,7 +55,7 @@ function PopularProductCard({ product }) {
       </div>
       <div className="">
         <CartButton onClick={() => setAddToCart(product)}>
-          <span className=" flex items-center gap-1 text-white font-krub-font">
+          <span className=" flex items-center justify-center gap-1 text-white font-krub-font">
             Add to Cart
             <CiShoppingCart size={24} />
           </span>
