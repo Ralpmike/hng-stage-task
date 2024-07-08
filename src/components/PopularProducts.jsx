@@ -20,16 +20,23 @@ export default function PopularProducts() {
         <p className=" flex items-center justify-end py-4 text-[#00522A] font-krub-font cursor-pointer">
           See all products <IoIosArrowRoundForward color="" size={24} />
         </p>
-        <div className="grid grid-cols-1 grid-rows-subgrid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {popularProducts.map((product) => (
-            <PopularProductCard
-              key={product.id}
-              product={product.product}
-              price={product.price}
-              image={product.image}
-            />
-          ))}
-        </div>
+        <>
+          <div className="grid border-[1px] grid-cols-1 grid-rows-subgrid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {popularProducts.map((product) => (
+              <PopularProductCard
+                key={product.id}
+                product={product.product}
+                price={product.price}
+                image={product.image}
+              />
+            ))}
+          </div>
+          <div className="w-full flex justify-center">
+            <button className="text-[#00522A] mx-auto mt-10 font-krub-font font-medium bg-transparent py-[24px] px-[32px] border-[1px] border-[#A7D0A6] rounded-lg ">
+              See More Products
+            </button>
+          </div>
+        </>
       </>
     </div>
   );

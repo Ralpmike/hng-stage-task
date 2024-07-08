@@ -16,6 +16,16 @@ import item4 from "./assets/images/item4.png";
 import item5 from "./assets/images/item5.png";
 import item6 from "./assets/images/item6.png";
 
+import BrownSpray from "./assets/images/unsplash_brownspray.png";
+import Electronic from "./assets/images/unsplash_electronic.png";
+import ShavingSet from "./assets/images/unsplash_shaving-set.png";
+import Spoons from "./assets/images/unsplash_spoons.png";
+import ToothBrush from "./assets/images/unsplash_toothbrush.png";
+import Vase from "./assets/images/unsplash_vase.png";
+import Cream from "./assets/images/unsplash-cream.png";
+import SilverSpray from "./assets/images/unsplash_silverspray.png";
+
+
 export const featuredProducts = [
   {
     id: 1,
@@ -130,6 +140,54 @@ export const popularProducts = [
     id: 8,
     product: "Sustaina Scent Eco-Friendly Candle",
     image: imgProduct4, //"./assets/images/item4.png",
+    price: 144,
+  },
+  {
+    id: 9,
+    product: "Nature Wood Cutlery set",
+    image: Spoons,
+    price: 144,
+  },
+  {
+    id: 10,
+    product: "Green Life Eco Friendly Water Bottle",
+    image: Vase,
+    price: 144,
+  },
+  {
+    id: 11,
+    product: "Eco Friendly Spot Remover",
+    image: BrownSpray,
+    price: 144,
+  },
+  {
+    id: 12,
+    product: "Sustaina Scent Sun Screen",
+    image: SilverSpray,
+    price: 144,
+  },
+  {
+    id: 13,
+    product: "Bronte Eco Friendly Shaving Stick",
+    image: ShavingSet,
+    price: 144,
+  },
+  {
+    id: 14,
+    product: "Event Garden Body Lotion",
+    image: Cream,
+    price: 144,
+  },
+  {
+    id: 15,
+    product: "Clean Eco Friendly Air Humidifier",
+    image: Electronic,
+    price: 144,
+  },
+  {
+    id: 16,
+    product: "Bamboo Wooden Toothbrush",
+    image: ToothBrush,
     price: 144,
   },
 

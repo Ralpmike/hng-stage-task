@@ -15,12 +15,11 @@ const router = createBrowserRouter([
         element: <App />,
         // loader: contactLoader,
       },
-      // {
-      //   path: "contacts/:contactId/edit",
-      //   element: <EditContact />,
-      //   loader: contactLoader,
-      //   action: editAction,
-      // },
+
+      {
+        path: "/checkout",
+        element: <div>Cart</div>,
+      },
     ],
   },
 ]);

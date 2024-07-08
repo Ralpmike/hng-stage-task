@@ -3,8 +3,8 @@ import ScrollingCardComponent from "./components/ScrollingCardComponent";
 import FeaturedProducts from "./components/FeaturedProducts";
 import ProductCollections from "./components/ProductCollections";
 import PopularProducts from "./components/PopularProducts";
-import AboutUs from "./components/AboutUs";
-import OurNewsLetterSub from "./components/OurNewsLetterSub";
+// import AboutUs from "./components/AboutUs";
+// import OurNewsLetterSub from "./components/OurNewsLetterSub";
 import Footer from "./components/Footer";
 
 export default function App() {
