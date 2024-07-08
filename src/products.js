@@ -16,14 +16,14 @@ import item4 from "./assets/images/item4.png";
 import item5 from "./assets/images/item5.png";
 import item6 from "./assets/images/item6.png";
 
-import BrownSpray from "./assets/images/unsplash_brownspray.png";
-import Electronic from "./assets/images/unsplash_electronic.png";
-import ShavingSet from "./assets/images/unsplash_shaving-set.png";
-import Spoons from "./assets/images/unsplash_spoons.png";
-import ToothBrush from "./assets/images/unsplash_toothbrush.png";
-import Vase from "./assets/images/unsplash_vase.png";
-import Cream from "./assets/images/unsplash-cream.png";
-import SilverSpray from "./assets/images/unsplash_silverspray.png";
+import BrownSpray from "./assets/images/brown_spray.png";
+import Electronic from "./assets/images/humidifier.png";
+import ShavingSet from "./assets/images/shaving_set.png";
+import Spoons from "./assets/images/spoon_set.png";
+import ToothBrush from "./assets/images/toothbrush.png";
+import Vase from "./assets/images/brown_vase.png";
+import Cream from "./assets/images/cream.png";
+import SilverSpray from "./assets/images/silver_spray.png";
 
 
 export const featuredProducts = [

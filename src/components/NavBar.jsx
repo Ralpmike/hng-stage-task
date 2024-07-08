@@ -6,7 +6,6 @@ import { CiHeart } from "react-icons/ci";
 import { CiShoppingCart } from "react-icons/ci";
 import { FaBars, FaMinus, FaPlus, FaTimes } from "react-icons/fa";
 import { useState } from "react";
-import Item from "../assets/images/pop-img1.png";
 import { GoTrash } from "react-icons/go";
 import { RxCross2 } from "react-icons/rx";
 import { CiSquarePlus } from "react-icons/ci";
@@ -18,7 +17,7 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
 
   const handleRedirect = () => {
     navigate("/checkout");
-    setMenuOpen(!menuOpen);
+    setMenuOpen(false);
   };
 
   const toggleMenu = () => {
@@ -83,15 +82,12 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
           <CiUser size={18} />
         </NavLink>
         <div className="hidden 1md:block">
-          <NavLink
-            to="#"
-            className="flex  flex-col justify-center items-center"
-          >
+          <NavLink to="#" className="flex flex-col justify-center items-center">
             <CiHeart size={18} />
           </NavLink>
         </div>
         <NavLink
-          to="/"
+          to="#"
           className={`"flex flex-col justify-center items-center" ${
             showCart
               ? " bg-[#a7d0a6] py-2 px-3 rounded-lg transition-all ease-in-out duration-700"
@@ -175,7 +171,7 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
           {/* <div className="w-full"> */}
           <button
             className="button-primary my-4 w-full text-[#E9FFE7]"
-            onClick={handleRedirect}
+            onClick={() => handleRedirect()}
           >
             Check Out
           </button>

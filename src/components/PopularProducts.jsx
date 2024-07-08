@@ -20,27 +20,17 @@ export default function PopularProducts() {
           suit every of your needs and wants.
         </p>
       </div>
-      <>
-        <p className=" flex items-center justify-end py-4 text-[#00522A] font-krub-font cursor-pointer">
-          See all products <IoIosArrowRoundForward color="" size={24} />
-        </p>
-        <>
-          <div className="grid border-[1px] grid-cols-1 grid-rows-subgrid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {popularProducts.map((product) => (
-              <PopularProductCard
-                key={product.id}
-                product={product}
-                // onClick={() => addToCart(product)}
-              />
-            ))}
-          </div>
-          <div className="w-full flex justify-center">
-            <button className="text-[#00522A] mx-auto mt-10 font-krub-font font-medium bg-transparent py-[24px] px-[32px] border-[1px] border-[#A7D0A6] rounded-lg ">
-              See More Products
-            </button>
-          </div>
-        </>
-      </>
+
+      <div className="grid grid-cols-1 grid-rows-subgrid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        {popularProducts.map((product) => (
+          <PopularProductCard key={product.id} product={product} />
+        ))}
+      </div>
+      <div className="w-full flex justify-center">
+        <button className="text-[#00522A] mx-auto mt-10 font-krub-font font-medium bg-transparent py-[24px] px-[32px] border-[1px] border-[#A7D0A6] rounded-lg ">
+          See More Products
+        </button>
+      </div>
     </div>
   );
 }
@@ -64,24 +54,13 @@ function PopularProductCard({ product }) {
         <p className="product-caption ">{product.product}</p>
         <p className="price-style">${product.price}</p>
       </div>
-      <div className="flex justify-between">
+      <div className="">
         <CartButton onClick={() => setAddToCart(product)}>
           <span className=" flex items-center gap-1 text-white font-krub-font">
             Add to Cart
             <CiShoppingCart size={24} />
           </span>
         </CartButton>
-        <button
-          className="bg-[#DDC596] p-4 rounded-xl"
-          onClick={() => setFavorite(!favorite)}
-        >
-          <CiHeart color="#fff" size={24} />
-          {/* {favorite ? (
-            <FaHeart color="red" size={24} />
-          ) : (
-           
-          )} */}
-        </button>
       </div>
     </div>
   );
