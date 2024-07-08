@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/root";
+import CheckoutPage from "./CheckoutPage";
 
 const router = createBrowserRouter([
   {
@@ -13,12 +14,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <App />,
-        // loader: contactLoader,
       },
-
       {
         path: "/checkout",
-        element: <div>Cart</div>,
+        element: <CheckoutPage />,
       },
     ],
   },

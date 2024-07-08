@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, redirect, useNavigate } from "react-router-dom";
 
 import { CiSearch, CiSquareMinus } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
@@ -10,13 +10,23 @@ import Item from "../assets/images/pop-img1.png";
 import { GoTrash } from "react-icons/go";
 import { RxCross2 } from "react-icons/rx";
 import { CiSquarePlus } from "react-icons/ci";
+import { useStore } from "../store";
 
 export default function NavBar({ onHandleToggleCart, showCart }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleRedirect = () => {
+    navigate("/checkout");
+    setMenuOpen(!menuOpen);
+  };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  const cartProducts = useStore((state) => state.cartProducts);
+
   return (
     <nav className="border-[#DDC596] px-4 md:px-8 md:gap-5 h-[80px] border-b-[.0625rem]  lg:gap-8 w-full mx-auto flex justify-evenly items-center ">
       {/* <div className="flex px-3 lg:gap-8 md:px-12 md:p-0  xl:gap-10 items-center h-[5rem] md:mx-auto border-2"> */}
@@ -34,7 +44,6 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
             <NavLink
               to={"/"}
               className="text-[14px] bg-[#a7d0a6] py-2 px-3 rounded-lg"
-              activeClassName="font-bold"
             >
               Home
             </NavLink>
@@ -72,7 +81,6 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
       <div className="flex gap-4 md:gap-[24px] items-center  text-[.625rem]">
         <NavLink to="#" className="flex flex-col justify-center items-center ">
           <CiUser size={18} />
-          <span>Account</span>
         </NavLink>
         <div className="hidden 1md:block">
           <NavLink
@@ -80,11 +88,10 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
             className="flex  flex-col justify-center items-center"
           >
             <CiHeart size={18} />
-            <span>Wishlist</span>
           </NavLink>
         </div>
         <NavLink
-          to="#"
+          to="/"
           className={`"flex flex-col justify-center items-center" ${
             showCart
               ? " bg-[#a7d0a6] py-2 px-3 rounded-lg transition-all ease-in-out duration-700"
@@ -92,8 +99,14 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
           }`}
           onClick={onHandleToggleCart}
         >
-          <CiShoppingCart size={18} />
-          <span>Cart</span>
+          <span className="relative">
+            <CiShoppingCart size={18} />
+            {cartProducts.length > 0 && (
+              <span className="absolute inset-x-0 -top-4 left-4 text-white pl-[6px] px-[3px] w-5 aspect-[1/1] rounded-[50%] inline-block bg-[#984343] text-[12px]">
+                {cartProducts.length}
+              </span>
+            )}
+          </span>
         </NavLink>
       </div>
 
@@ -104,7 +117,6 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
               <NavLink
                 to={"/"}
                 className="text-[14px] bg-[#a7d0a6] py-2 px-3 rounded-lg"
-                activeClassName="font-bold"
               >
                 Home
               </NavLink>
@@ -139,20 +151,22 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
       )}
       {/* </div> */}
       {showCart && (
-        <div className="absolute top-[80px] w-[320px] sm:w-[370px] md:w-[590px] h-[981px] inset-y-4 right-1 z-30  justify-center py-3 px-6 bg-[#F9F2E1]">
+        <div className="absolute top-[80px] w-[320px] sm:w-[370px] md:w-[590px]  h-fit inset-y-4 right-1 z-30  justify-center py-3 px-6 bg-[#F9F2E1]">
           <ul>
             <div className="flex justify-between">
               <h2 className="font-krub-font text-[28px] font-[600] flex items-center gap-2">
                 My Cart
                 <span className="text-white py-[2px] px-[10px] w-8 aspect-[1/1] rounded-[50%] inline-block bg-[#00522A] text-[18px]">
-                  2
+                  {cartProducts.length}
                 </span>
               </h2>
               <button>
                 <RxCross2 size={24} onClick={onHandleToggleCart} />
               </button>
             </div>
-            <Cart />
+            {cartProducts.map((product) => (
+              <Cart key={product.id} product={product} />
+            ))}
           </ul>
           <div className="flex justify-between py-5 font-krub-font items-center border-y-2 border-y-[#DDC596]">
             <p className="text-[1rem] font-normal">Subtotal:</p>
@@ -161,9 +175,9 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
           {/* <div className="w-full"> */}
           <button
             className="button-primary my-4 w-full text-[#E9FFE7]"
-            // onClick={onHandleToggleCart}
+            onClick={handleRedirect}
           >
-            <NavLink to="/checkout"> Check Out</NavLink>
+            Check Out
           </button>
           {/* </div> */}
         </div>
@@ -172,31 +186,43 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
   );
 }
 
-function Cart() {
+function Cart({ product }) {
   return (
-    <li className="flex flex-col md:flex-row py-6 gap-4 gap-y-12  w-full transition-all ease-in duration-[3000]">
-      <img src={Item} alt="demo" className="max-w-[210px] max-h-[190px]" />
+    <div>
+      {/* {cartProducts.map((product) => () => { */}
+      <li className="flex flex-col md:flex-row py-6 gap-4 gap-y-12  w-full transition-all ease-in duration-[3000]">
+        <img
+          src={product.image}
+          alt="demo"
+          className="max-w-[210px] max-h-[190px]"
+        />
 
-      <div className="flex flex-col gap-2 justify-evenly">
-        <div className="flex justify-between  font-krub-font font-medium">
-          <h3 className="txet-[14px] md:text-lg max-w-[220px]">
-            Nature Wear Organic Roundwear
-          </h3>{" "}
-          <span className="ml-auto font-semibold absolute right-6">$100</span>
-        </div>
-        <div className=" ">
-          <div className="relative">
-            <FaPlus className="absolute inset-1 left-[30%] top-3  md:left-[40%] md:top-3  md:inset-x-1" />
-            <span className="bg-white inline-block w-[7.9375rem] p-2 pl-16 rounded-lg">
-              1
+        <div className="flex flex-col gap-2 justify-evenly">
+          <div className="flex justify-between  font-krub-font font-medium">
+            <h3 className="txet-[14px] md:text-lg max-w-[160px]">
+              {product.product}
+            </h3>{" "}
+            <span className="ml-auto font-semibold absolute right-6">
+              ${product.price}
             </span>
-            <FaMinus className="absolute inset-9  top-3 md:left-5 md:top-3  md:inset-x-1" />
           </div>
-          <button className=" absolute top-[39%] right-8 md:left-[90%] md:top-[21.5%] ">
-            <GoTrash />
-          </button>
+          {/* <div className=" "> */}
+          <div className="gap-12 md:gap-[200px] relative flex justify-between ">
+            <div>
+              <FaPlus className="absolute inset-9 left-[50%] top-3 right-[54%]  md:left-[26%] md:top-3 " />
+              <span className="bg-white inline-block w-[7.9375rem] p-2 pl-16 rounded-lg">
+                1
+              </span>
+              <FaMinus className="absolute inset-9  top-3 md:left-5 md:top-3  md:inset-x-1" />
+            </div>
+            <button className="w-[100%] flex justify-end items-center ">
+              <GoTrash />
+            </button>
+          </div>
+          {/* </div> */}
         </div>
-      </div>
-    </li>
+      </li>
+      {/* })} */}
+    </div>
   );
 }

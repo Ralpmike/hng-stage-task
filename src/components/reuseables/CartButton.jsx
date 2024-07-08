@@ -1,3 +1,7 @@
-export default function CartButton({ children }) {
-  return <button className="button-secondary">{children}</button>;
+export default function CartButton({ children, onClick }) {
+  return (
+    <button className="button-secondary" onClick={onClick}>
+      {children}
+    </button>
+  );
 }

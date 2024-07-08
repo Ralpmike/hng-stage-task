@@ -1,10 +1,14 @@
+// import { useState } from "react";
 import { popularProducts } from "../products";
 import CartButton from "./reuseables/CartButton";
 import { CiShoppingCart } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { IoIosArrowRoundForward } from "react-icons/io";
+import { useStore } from "../store";
+import { FaHeart } from "react-icons/fa";
 
 export default function PopularProducts() {
+  // const [favorite, setFavorite] = useState(false);
   return (
     <div className="px-5 md:px-12">
       <div className="py-12">
@@ -25,9 +29,8 @@ export default function PopularProducts() {
             {popularProducts.map((product) => (
               <PopularProductCard
                 key={product.id}
-                product={product.product}
-                price={product.price}
-                image={product.image}
+                product={product}
+                // onClick={() => addToCart(product)}
               />
             ))}
           </div>
@@ -42,25 +45,42 @@ export default function PopularProducts() {
   );
 }
 
-function PopularProductCard({ product, price, image }) {
+function PopularProductCard({ product }) {
+  const cartProducts = useStore((state) => state.cartProducts);
+  console.log(cartProducts);
+
+  const setAddToCart = useStore((state) => state.setAddToCart);
+
   return (
     <div className="grid gap-3 hover:border-2 hover:border-[#B15818] p-2 rounded-[10px] cursor-pointer transition-all ease-in   ">
       {/* <div className="grid grid"> */}
 
-      <img src={image} alt={product} className="w-full object-cover" />
+      <img
+        src={product?.image}
+        alt={product.product}
+        className="w-full object-cover"
+      />
       <div className="flex items-center justify-between gap-2">
-        <p className="product-caption ">{product}</p>
-        <p className="price-style">${price}</p>
+        <p className="product-caption ">{product.product}</p>
+        <p className="price-style">${product.price}</p>
       </div>
       <div className="flex justify-between">
-        <CartButton>
+        <CartButton onClick={() => setAddToCart(product)}>
           <span className=" flex items-center gap-1 text-white font-krub-font">
             Add to Cart
             <CiShoppingCart size={24} />
           </span>
         </CartButton>
-        <button className="bg-[#DDC596] p-4 rounded-xl">
-          <CiHeart color="#fff" size={28} fontWeight={"700"} />
+        <button
+          className="bg-[#DDC596] p-4 rounded-xl"
+          onClick={() => setFavorite(!favorite)}
+        >
+          <CiHeart color="#fff" size={24} />
+          {/* {favorite ? (
+            <FaHeart color="red" size={24} />
+          ) : (
+           
+          )} */}
         </button>
       </div>
     </div>
