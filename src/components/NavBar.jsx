@@ -79,13 +79,9 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
       </div>
       <div className="flex gap-4 md:gap-[24px] items-center  text-[.625rem]">
         <NavLink to="#" className="flex flex-col justify-center items-center ">
-          <CiUser size={18} />
+          <CiUser size={24} />
         </NavLink>
-        <div className="hidden 1md:block">
-          <NavLink to="#" className="flex flex-col justify-center items-center">
-            <CiHeart size={18} />
-          </NavLink>
-        </div>
+
         <NavLink
           to="#"
           className={`"flex flex-col justify-center items-center" ${
@@ -96,7 +92,7 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
           onClick={onHandleToggleCart}
         >
           <span className="relative">
-            <CiShoppingCart size={18} />
+            <CiShoppingCart size={24} />
             {cartProducts.length > 0 && (
               <span className="absolute inset-x-0 -top-4 left-4 text-white pl-[6px] px-[3px] w-5 aspect-[1/1] rounded-[50%] inline-block bg-[#984343] text-[12px]">
                 {cartProducts.length}

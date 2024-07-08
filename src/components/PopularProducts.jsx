@@ -10,7 +10,7 @@ import { FaHeart } from "react-icons/fa";
 export default function PopularProducts() {
   // const [favorite, setFavorite] = useState(false);
   return (
-    <div className="px-5 md:px-12" id="popular">
+    <div className="px-5 md:px-8" id="popular">
       <div className="py-12">
         <h2 className="sub-h2-style text-center">
           Popular best selling products
@@ -26,7 +26,7 @@ export default function PopularProducts() {
         ))}
       </div>
       <div className="w-full flex justify-center">
-        <button className="text-[#00522A] mx-auto mt-10 font-krub-font font-medium bg-transparent py-[24px] px-[32px] border-[1px] border-[#A7D0A6] rounded-lg ">
+        <button className="text-[#00522A] mx-auto mt-7 font-krub-font font-medium bg-transparent py-[24px] px-[32px] border-[1px] border-[#A7D0A6] rounded-lg ">
           See More Products
         </button>
       </div>
