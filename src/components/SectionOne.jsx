@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export default function SectionOne() {
   return (
-    <div className="flex flex-col my-0  text-center px-5 md:px-[64px] items-center justify-center md:text-center gap-5 md:my-[3rem]">
+    <div className="flex flex-col my-0  text-center px-5 md:px-[64px] items-center justify-center md:text-center gap-5 md:my-[2rem]">
       <h5 className="text-[#572A00] my-2 text-[9px] sm:text-[.625rem] font-krub-font py-2 px-4 bg-[#FFE6CE]  rounded-2xl">
         🏆 2023 & 2024 AWARD WINNING ECO-FRIENDLY STORE
       </h5>

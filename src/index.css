@@ -80,6 +80,14 @@ html {
 .custom-select option:first-child {
   display: none;
 }
+
+.label-input {
+  @apply block text-[14px] font-medium text-primary_black font-krub-font tracking-wide;
+}
+
+.in-design {
+  @apply border-[1px] border-[#DDC596] px-[16px] w-[320px] max-w-full  rounded-[6px] py-[10px];
+}
 /* a {
   @apply px-[12px] py-[8px] rounded-lg;
 } */

@@ -17,7 +17,8 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
 
   const handleRedirect = () => {
     navigate("/checkout");
-    setMenuOpen(false);
+    // toggleMenu();
+    setMenuOpen(!menuOpen);
   };
 
   const toggleMenu = () => {
@@ -27,7 +28,7 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
   const cartProducts = useStore((state) => state.cartProducts);
 
   return (
-    <nav className="border-[#DDC596] px-4 md:px-8 md:gap-5 h-[80px] border-b-[.0625rem]  lg:gap-8 w-full mx-auto flex justify-evenly items-center ">
+    <nav className=" bg-defaultbg-color border-[#DDC596] px-4 md:px-8 md:gap-5 h-[80px] border-b-[.0625rem]  lg:gap-8 w-full mx-auto flex justify-evenly items-center sticky top-0 z-30 ">
       {/* <div className="flex px-3 lg:gap-8 md:px-12 md:p-0  xl:gap-10 items-center h-[5rem] md:mx-auto border-2"> */}
       <button onClick={toggleMenu} className=" 1md:hidden mr-auto ">
         {menuOpen ? <FaTimes size={24} /> : <FaBars size={20} />}
@@ -42,7 +43,11 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
           <li>
             <NavLink
               to={"/"}
-              className="text-[14px] bg-[#a7d0a6] py-2 px-3 rounded-lg"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-[14px] bg-[#a7d0a6] py-2 px-3 rounded-lg"
+                  : "default"
+              }
             >
               Home
             </NavLink>
@@ -60,11 +65,6 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
                 <option value="3">Option 3</option>
               </select>
             </label>
-          </li>
-          <li>
-            <NavLink to="#" className="text-[14px] ">
-              About us
-            </NavLink>
           </li>
           <li className="flex gap-4 items-center relative">
             <input
@@ -94,7 +94,7 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
           <span className="relative">
             <CiShoppingCart size={24} />
             {cartProducts.length > 0 && (
-              <span className="absolute inset-x-0 -top-4 left-4 text-white pl-[6px] px-[3px] w-5 aspect-[1/1] rounded-[50%] inline-block bg-[#984343] text-[12px]">
+              <span className="absolute inset-x-0 -top-4 left-4 text-white flex justify-center items-center w-5 aspect-[1/1] rounded-[50%]  bg-[#984343] text-[10px]">
                 {cartProducts.length}
               </span>
             )}
@@ -143,12 +143,12 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
       )}
       {/* </div> */}
       {showCart && (
-        <div className="absolute top-[80px] w-[320px] sm:w-[370px] md:w-[590px]  h-fit inset-y-4 right-1 z-30  justify-center py-3 px-6 bg-[#F9F2E1]">
+        <div className="absolute top-[80px] w-[320px] sm:w-[370px] md:w-[590px]  h-fit inset-y-4 right-1 z-30  justify-center py-3 px-6 bg-[#F9F2E1] overflow-y-auto max-h-[calc(100vh-80px)]">
           <ul>
             <div className="flex justify-between">
               <h2 className="font-krub-font text-[28px] font-[600] flex items-center gap-2">
                 My Cart
-                <span className="text-white py-[2px] px-[10px] w-8 aspect-[1/1] rounded-[50%] inline-block bg-[#00522A] text-[18px]">
+                <span className="text-white flex justify-center items-center w-8 aspect-[1/1] rounded-[50%]  bg-[#00522A] text-[16px]">
                   {cartProducts.length}
                 </span>
               </h2>
@@ -167,7 +167,7 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
           {/* <div className="w-full"> */}
           <button
             className="button-primary my-4 w-full text-[#E9FFE7]"
-            onClick={() => handleRedirect()}
+            onClick={handleRedirect}
           >
             Check Out
           </button>

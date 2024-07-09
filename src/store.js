@@ -6,3 +6,9 @@ export const useStore = create((set) => ({
   setAddToCart: (product) => set((curr) => ({ cartProducts: [...curr.cartProducts, product] })),
 
 }))
+
+
+export const useStsteStore = create((set) => ({
+  change: false,
+  setChange: () => set((curr) => ({ change: !curr.change })),
+}))
