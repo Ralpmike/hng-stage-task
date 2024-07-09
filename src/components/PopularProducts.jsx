@@ -6,9 +6,9 @@ import { CiHeart } from "react-icons/ci";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { useStore } from "../store";
 import { FaHeart } from "react-icons/fa";
+import { useAddedToCart } from "../store";
 
 export default function PopularProducts() {
-  // const [favorite, setFavorite] = useState(false);
   return (
     <div className="px-5 md:px-8" id="popular">
       <div className="py-12">
@@ -36,30 +36,48 @@ export default function PopularProducts() {
 
 function PopularProductCard({ product }) {
   const cartProducts = useStore((state) => state.cartProducts);
-  console.log(cartProducts);
-
   const setAddToCart = useStore((state) => state.setAddToCart);
+  const removeFromCart = useStore((state) => state.removeFromCart);
+
+  const isInCart = cartProducts.some(
+    (cartProduct) => cartProduct.id === product.id
+  );
+
+  const handleAddToCart = () => {
+    setAddToCart(product);
+  };
+
+  const handleRemoveFromCart = () => {
+    removeFromCart(product.id);
+  };
 
   return (
-    <div className="grid gap-3 hover:border-2 hover:border-[#B15818] p-2 rounded-[10px] cursor-pointer transition-all ease-in   ">
-      {/* <div className="grid grid"> */}
-
+    <div className="grid gap-3 hover:border-2 hover:border-[#B15818] p-2 rounded-[10px] cursor-pointer transition-all ease-in">
       <img
-        src={product?.image}
+        src={product.image}
         alt={product.product}
         className="w-full object-cover"
       />
       <div className="flex items-center justify-between gap-2">
-        <p className="product-caption ">{product.product}</p>
+        <p className="product-caption">{product.product}</p>
         <p className="price-style">${product.price}</p>
       </div>
-      <div className="">
-        <CartButton onClick={() => setAddToCart(product)}>
-          <span className=" flex items-center justify-center gap-1 text-white font-krub-font">
-            Add to Cart
-            <CiShoppingCart size={24} />
-          </span>
-        </CartButton>
+      <div>
+        {isInCart ? (
+          <CartButton onClick={handleRemoveFromCart}>
+            <span className="flex items-center justify-center gap-1 text-white font-krub-font">
+              Remove from Cart
+              <CiShoppingCart size={24} />
+            </span>
+          </CartButton>
+        ) : (
+          <CartButton onClick={handleAddToCart}>
+            <span className="flex items-center justify-center gap-1 text-white font-krub-font">
+              Add to Cart
+              <CiShoppingCart size={24} />
+            </span>
+          </CartButton>
+        )}
       </div>
     </div>
   );

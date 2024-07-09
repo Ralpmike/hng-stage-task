@@ -9,7 +9,7 @@ import { useState } from "react";
 import { GoTrash } from "react-icons/go";
 import { RxCross2 } from "react-icons/rx";
 import { CiSquarePlus } from "react-icons/ci";
-import { useStore } from "../store";
+import { useMyStore, useStore } from "../store";
 
 export default function NavBar({ onHandleToggleCart, showCart }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,6 +26,9 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
 
   const cartProducts = useStore((state) => state.cartProducts);
   const removeFromCart = useStore((state) => state.removeFromCart);
+  const increase = useMyStore((state) => state.increase);
+  const setIncrease = useMyStore((state) => state.setIncrease);
+  const setDecrease = useMyStore((state) => state.setDecrease);
 
   const totalPrice = cartProducts.reduce(
     (acc, product) => acc + product.price,
@@ -164,6 +167,9 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
                 key={product.id}
                 product={product}
                 removeFromCart={removeFromCart}
+                increase={increase}
+                setDecrease={setDecrease}
+                setIncrease={setIncrease}
               />
             ))}
           </ul>
@@ -187,7 +193,7 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
   );
 }
 
-function Cart({ product, removeFromCart }) {
+function Cart({ product, removeFromCart, increase, setDecrease, setIncrease }) {
   return (
     <div>
       {/* {cartProducts.map((product) => () => { */}
@@ -210,11 +216,17 @@ function Cart({ product, removeFromCart }) {
           {/* <div className=" "> */}
           <div className="gap-12 md:gap-[200px] relative flex justify-between ">
             <div>
-              <FaPlus className="absolute inset-9 left-[50%] top-3 right-[54%]  md:left-[26%] md:top-3 " />
+              <FaPlus
+                className="absolute cursor-pointer inset-9 left-[50%] top-3 right-[54%]  md:left-[26%] md:top-3 "
+                onClick={setIncrease}
+              />
               <span className="bg-white inline-block w-[7.9375rem] p-2 pl-16 rounded-lg">
-                1
+                {increase}
               </span>
-              <FaMinus className="absolute inset-9  top-3 md:left-5 md:top-3  md:inset-x-1" />
+              <FaMinus
+                className="absolute cursor-pointer inset-9  top-3 md:left-5 md:top-3  md:inset-x-1"
+                onClick={setDecrease}
+              />
             </div>
             <button
               className="w-[100%] flex justify-end items-center "
