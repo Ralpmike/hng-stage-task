@@ -25,6 +25,7 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
   };
 
   const cartProducts = useStore((state) => state.cartProducts);
+  const removeFromCart = useStore((state) => state.removeFromCart);
 
   return (
     <nav className=" bg-defaultbg-color border-[#DDC596] px-4 md:px-8 md:gap-5 h-[80px] border-b-[.0625rem]  lg:gap-8 w-full mx-auto flex justify-evenly items-center sticky top-0 z-30 ">
@@ -156,7 +157,11 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
               </button>
             </div>
             {cartProducts.map((product) => (
-              <Cart key={product.id} product={product} />
+              <Cart
+                key={product.id}
+                product={product}
+                removeFromCart={removeFromCart}
+              />
             ))}
           </ul>
           <div className="flex justify-between py-5 font-krub-font items-center border-y-2 border-y-[#DDC596]">
@@ -177,7 +182,7 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
   );
 }
 
-function Cart({ product }) {
+function Cart({ product, removeFromCart }) {
   return (
     <div>
       {/* {cartProducts.map((product) => () => { */}
@@ -206,7 +211,10 @@ function Cart({ product }) {
               </span>
               <FaMinus className="absolute inset-9  top-3 md:left-5 md:top-3  md:inset-x-1" />
             </div>
-            <button className="w-[100%] flex justify-end items-center ">
+            <button
+              className="w-[100%] flex justify-end items-center "
+              onClick={() => removeFromCart(product.id)}
+            >
               <GoTrash />
             </button>
           </div>
