@@ -39,8 +39,8 @@ export default function CheckoutPage() {
         </div>
         <div className="border-[1px] border-[#DDC596] flex flex-col gap-3 p-4 rounded-[10px]">
           <h3 className="font-medium text-[24px]">Payment Information</h3>
-          <form className="grid gap-3 grid-cols-1">
-            <div className="flex flex-col gap-3 text-[16px] font-krub-font font-medium border-y-[1px] py-3">
+          <form className="grid gap-8 grid-cols-1">
+            <div className="flex flex-col gap-4 text-[16px] font-krub-font font-medium border-y-[1px] py-4">
               <h3 className="font-[600]">Pay With</h3>
 
               <label htmlFor="credit">
@@ -63,6 +63,57 @@ export default function CheckoutPage() {
                 />{" "}
                 Pay on Delivery
               </label>
+            </div>
+
+            <div className="flex flex-col gap-4 text-[16px] font-krub-font font-medium border-y-[1px] py-4">
+              <h3 className="font-[600]">Enter Card Information</h3>
+              <div>
+                <label htmlFor="firstName" className="label-input">
+                  Cardholder Name
+                </label>
+                <input
+                  type="text"
+                  name="firstName"
+                  id="firstName"
+                  className="in-design  "
+                />
+              </div>
+              <div>
+                <label htmlFor="firstName" className="label-input">
+                  Cardholder Name
+                </label>
+                <input
+                  type="text"
+                  name="firstName"
+                  id="firstName"
+                  className="in-design  "
+                />
+              </div>
+              <div className="flex gap-2 w-fit">
+                <div>
+                  <label htmlFor="firstName" className="label-input">
+                    Expiry Date
+                  </label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    id="firstName"
+                    className=" outline-none max-w-[150px] border-[1px] border-[#DDC596] px-[16px] py-[10px] rounded-[6px]  "
+                  />
+                </div>
+                <div>
+                  <label htmlFor="firstName" className="label-input">
+                    CVV
+                  </label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    id="firstName"
+                    className=" outline-none max-w-[150px] border-[1px] border-[#DDC596] px-[16px] py-[10px] rounded-[6px]  "
+                  />
+                </div>
+              </div>
+              <div></div>
             </div>
           </form>
         </div>

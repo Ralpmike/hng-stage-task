@@ -86,7 +86,7 @@ html {
 }
 
 .in-design {
-  @apply border-[1px] border-[#DDC596] px-[16px] w-[320px] max-w-full  rounded-[6px] py-[10px];
+  @apply border-[1px] border-[#DDC596] px-[16px] w-[320px] max-w-full  rounded-[6px] py-[10px] outline-none;
 }
 /* a {
   @apply px-[12px] py-[8px] rounded-lg;

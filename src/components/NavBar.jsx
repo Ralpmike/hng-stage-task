@@ -17,8 +17,7 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
 
   const handleRedirect = () => {
     navigate("/checkout");
-    // toggleMenu();
-    setMenuOpen(!menuOpen);
+    onHandleToggleCart();
   };
 
   const toggleMenu = () => {
