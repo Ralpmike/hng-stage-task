@@ -27,6 +27,11 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
   const cartProducts = useStore((state) => state.cartProducts);
   const removeFromCart = useStore((state) => state.removeFromCart);
 
+  const totalPrice = cartProducts.reduce(
+    (acc, product) => acc + product.price,
+    0
+  );
+
   return (
     <nav className=" bg-defaultbg-color border-[#DDC596] px-4 md:px-8 md:gap-5 h-[80px] border-b-[.0625rem]  lg:gap-8 w-full mx-auto flex justify-evenly items-center sticky top-0 z-30 ">
       {/* <div className="flex px-3 lg:gap-8 md:px-12 md:p-0  xl:gap-10 items-center h-[5rem] md:mx-auto border-2"> */}
@@ -85,9 +90,7 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
         <NavLink
           to="#"
           className={`"flex flex-col justify-center items-center" ${
-            showCart
-              ? " bg-[#a7d0a6] py-2 px-3 rounded-lg transition-all ease-in-out duration-700"
-              : ""
+            showCart ? " transition-all ease-in-out duration-700" : ""
           }`}
           onClick={onHandleToggleCart}
         >
@@ -166,7 +169,9 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
           </ul>
           <div className="flex justify-between py-5 font-krub-font items-center border-y-2 border-y-[#DDC596]">
             <p className="text-[1rem] font-normal">Subtotal:</p>
-            <h3 className="text-[20px] font-[600]">$429.00</h3>
+            <h3 className="text-[20px] font-[600]">
+              {cartProducts.length <= 0 ? "$0.00" : `$${totalPrice}`}
+            </h3>
           </div>
           {/* <div className="w-full"> */}
           <button
