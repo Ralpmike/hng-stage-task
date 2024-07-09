@@ -9,7 +9,7 @@ import { useState } from "react";
 import { GoTrash } from "react-icons/go";
 import { RxCross2 } from "react-icons/rx";
 import { CiSquarePlus } from "react-icons/ci";
-import { useMyStore, useStore } from "../store";
+import { useStore } from "../store";
 
 export default function NavBar({ onHandleToggleCart, showCart }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,10 +25,6 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
   };
 
   const cartProducts = useStore((state) => state.cartProducts);
-  const removeFromCart = useStore((state) => state.removeFromCart);
-  const increase = useMyStore((state) => state.increase);
-  const setIncrease = useMyStore((state) => state.setIncrease);
-  const setDecrease = useMyStore((state) => state.setDecrease);
 
   const totalPrice = cartProducts.reduce(
     (acc, product) => acc + product.price,
@@ -163,14 +159,7 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
               </button>
             </div>
             {cartProducts.map((product) => (
-              <Cart
-                key={product.id}
-                product={product}
-                removeFromCart={removeFromCart}
-                increase={increase}
-                setDecrease={setDecrease}
-                setIncrease={setIncrease}
-              />
+              <Cart key={product.id} product={product} />
             ))}
           </ul>
           <div className="flex justify-between py-5 font-krub-font items-center border-y-2 border-y-[#DDC596]">
@@ -193,7 +182,10 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
   );
 }
 
-function Cart({ product, removeFromCart, increase, setDecrease, setIncrease }) {
+function Cart({ product }) {
+  const removeFromCart = useStore((state) => state.removeFromCart);
+  const increaseQuantity = useStore((state) => state.increaseQuantity);
+  const decreaseQuantity = useStore((state) => state.decreaseQuantity);
   return (
     <div>
       {/* {cartProducts.map((product) => () => { */}
@@ -218,14 +210,14 @@ function Cart({ product, removeFromCart, increase, setDecrease, setIncrease }) {
             <div>
               <FaPlus
                 className="absolute cursor-pointer inset-9 left-[50%] top-3 right-[54%]  md:left-[26%] md:top-3 "
-                onClick={setIncrease}
+                onClick={() => increaseQuantity(product.id)}
               />
               <span className="bg-white inline-block w-[7.9375rem] p-2 pl-16 rounded-lg">
-                {increase}
+                {product.quantity}
               </span>
               <FaMinus
                 className="absolute cursor-pointer inset-9  top-3 md:left-5 md:top-3  md:inset-x-1"
-                onClick={setDecrease}
+                onClick={() => decreaseQuantity(product.id)}
               />
             </div>
             <button

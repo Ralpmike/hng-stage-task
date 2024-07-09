@@ -88,6 +88,11 @@ html {
 .in-design {
   @apply border-[1px] border-[#DDC596] px-[16px] w-[320px] max-w-full  rounded-[6px] py-[10px] outline-none;
 }
+
+.remove-btn {
+  @apply bg-[#25372E] rounded-[8px] px-8 py-4 hover:bg-[#00522A] hover:border-[2px] hover:border-b-[#001B0E];
+}
+
 /* a {
   @apply px-[12px] py-[8px] rounded-lg;
 } */

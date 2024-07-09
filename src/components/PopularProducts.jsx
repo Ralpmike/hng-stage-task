@@ -6,7 +6,6 @@ import { CiHeart } from "react-icons/ci";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { useStore } from "../store";
 import { FaHeart } from "react-icons/fa";
-import { useAddedToCart } from "../store";
 
 export default function PopularProducts() {
   return (
@@ -64,14 +63,13 @@ function PopularProductCard({ product }) {
       </div>
       <div>
         {isInCart ? (
-          <CartButton onClick={handleRemoveFromCart}>
+          <CartButton onClick={handleRemoveFromCart} butnType="remove">
             <span className="flex items-center justify-center gap-1 text-white font-krub-font">
               Remove from Cart
-              <CiShoppingCart size={24} />
             </span>
           </CartButton>
         ) : (
-          <CartButton onClick={handleAddToCart}>
+          <CartButton onClick={handleAddToCart} butnType="add">
             <span className="flex items-center justify-center gap-1 text-white font-krub-font">
               Add to Cart
               <CiShoppingCart size={24} />
