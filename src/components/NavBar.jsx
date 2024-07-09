@@ -186,6 +186,8 @@ function Cart({ product }) {
   const removeFromCart = useStore((state) => state.removeFromCart);
   const increaseQuantity = useStore((state) => state.increaseQuantity);
   const decreaseQuantity = useStore((state) => state.decreaseQuantity);
+
+  // const numberOfItems = product.quantity;
   return (
     <div>
       {/* {cartProducts.map((product) => () => { */}
@@ -213,7 +215,7 @@ function Cart({ product }) {
                 onClick={() => increaseQuantity(product.id)}
               />
               <span className="bg-white inline-block w-[7.9375rem] p-2 pl-16 rounded-lg">
-                {product.quantity}
+                {product.quantity < 1 ? 1 : product.quantity}
               </span>
               <FaMinus
                 className="absolute cursor-pointer inset-9  top-3 md:left-5 md:top-3  md:inset-x-1"
