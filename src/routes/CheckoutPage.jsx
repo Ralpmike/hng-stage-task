@@ -37,7 +37,7 @@ export default function CheckoutPage() {
             ))}
           </ul>
         </div>
-        <div className="border-[1px] order-2 lg:order-3 row-span-2 border-[#DDC596] flex flex-col gap-3 p-4 rounded-[10px]">
+        <div className="border-[1px] order-2 xl:order-none row-span-2 border-[#DDC596] flex flex-col gap-3 p-4 rounded-[10px]">
           <h3 className="font-medium text-[24px]">Payment Information</h3>
           <form className="grid gap-4 grid-cols-1">
             <div className="flex flex-col gap-4 text-[16px] font-krub-font font-medium border-y-[1px] py-4">
@@ -124,21 +124,23 @@ export default function CheckoutPage() {
             </div>
             <div className="flex flex-col gap-2 border-b-[1px]  py-4">
               <div className="flex justify-between items-center">
-                <p>Sub Total</p>
-                <p>$2115.00</p>
+                <p className="font-normal text-[14px]">Sub Total</p>
+                <p className="font-medium text-[14px] text-[#2F3935]">
+                  $2115.00
+                </p>
               </div>
               <div className="flex justify-between items-center ">
-                <p>Task(10%)</p>
-                <p>$54.00</p>
+                <p className="font-normal text-[14px]">Task(10%)</p>
+                <p className="font-medium text-[14px] text-[#2F3935]">$54.00</p>
               </div>
               <div className="flex justify-between items-center">
-                <p>Shipping</p>
-                <p>$$0.00</p>
+                <p className="font-normal text-[14px]">Shipping</p>
+                <p className="font-medium text-[14px] text-[#2F3935]">$$0.00</p>
               </div>
             </div>
             <div className="flex justify-between items-center">
-              <p>Total</p>
-              <p>$2169.00</p>
+              <p className="font-normal text-[14px]">Total</p>
+              <p className="font-medium text-[14px] text-[#2F3935]">$2169.00</p>
             </div>
             <button className="button-secondary text-white w-full">
               Place Order
