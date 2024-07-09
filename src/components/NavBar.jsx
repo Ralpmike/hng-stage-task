@@ -94,7 +94,7 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
           <span className="relative">
             <CiShoppingCart size={24} />
             {cartProducts.length > 0 && (
-              <span className="absolute inset-x-0 -top-4 left-4 text-white flex justify-center items-center w-5 aspect-[1/1] rounded-[50%]  bg-[#984343] text-[10px]">
+              <span className="absolute inset-x-0 -top-4 left-4 text-white flex justify-center items-center w-5 aspect-[1/1] rounded-[50%]  bg-[#00522A] text-[10px]">
                 {cartProducts.length}
               </span>
             )}
@@ -148,7 +148,7 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
             <div className="flex justify-between">
               <h2 className="font-krub-font text-[28px] font-[600] flex items-center gap-2">
                 My Cart
-                <span className="text-white flex justify-center items-center w-8 aspect-[1/1] rounded-[50%]  bg-[#00522A] text-[16px]">
+                <span className="text-white flex justify-center items-center w-6 aspect-[1/1] rounded-[50%]  bg-[#00522A] text-[14px]">
                   {cartProducts.length}
                 </span>
               </h2>
