@@ -1,14 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useStore } from "../store";
+import { MdOutlineDateRange } from "react-icons/md";
+import { CiLock } from "react-icons/ci";
 
 export default function CheckoutPage() {
   const cartProducts = useStore((state) => state.cartProducts);
 
-  const currentPath = window.location.pathname;
-
   return (
-    <div className="px-[106px] mt-10 flex flex-col gap-4 font-krub-font">
+    <div className="px-6 md:px-12 xl:px-[100px] mt-10 flex flex-col gap-4 font-krub-font">
       <div className="flex py-3">
         <NavLink to="/" className="font-medium">
           Home
@@ -23,11 +23,11 @@ export default function CheckoutPage() {
           Checkout
         </NavLink>
       </div>
-      <div className="grid gap-4 grid-cols-1 md:grid-cols-3 font-krub-font">
-        <div className="p-4 px-6 border-[1px] border-[#DDC596] col-span-2 gap-3 rounded-[10px]">
+      <div className="grid gap-4 grid-cols-1 xl:grid-cols-3 font-krub-font">
+        <div className="py-4 px-2 md:px-6 border-[1px] border-[#DDC596] col-span-2 gap-3 rounded-[10px]">
           <h3 className="font-medium text-[24px] flex items-center gap-2">
             Order Summary{" "}
-            <span className=" text-white  w-8  aspect-[1/1] rounded-[50%] flex justify-center items-center bg-[#00522A] text-[12px]">
+            <span className=" text-white  w-7  aspect-[1/1] rounded-[50%] flex justify-center items-center bg-[#00522A] text-[12px]">
               {cartProducts.length}
             </span>
           </h3>
@@ -37,9 +37,9 @@ export default function CheckoutPage() {
             ))}
           </ul>
         </div>
-        <div className="border-[1px] border-[#DDC596] flex flex-col gap-3 p-4 rounded-[10px]">
+        <div className="border-[1px] order-2 lg:order-3 row-span-2 border-[#DDC596] flex flex-col gap-3 p-4 rounded-[10px]">
           <h3 className="font-medium text-[24px]">Payment Information</h3>
-          <form className="grid gap-8 grid-cols-1">
+          <form className="grid gap-4 grid-cols-1">
             <div className="flex flex-col gap-4 text-[16px] font-krub-font font-medium border-y-[1px] py-4">
               <h3 className="font-[600]">Pay With</h3>
 
@@ -89,8 +89,8 @@ export default function CheckoutPage() {
                   className="in-design  "
                 />
               </div>
-              <div className="flex gap-2 w-fit">
-                <div>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div className="relative">
                   <label htmlFor="firstName" className="label-input">
                     Expiry Date
                   </label>
@@ -98,28 +98,58 @@ export default function CheckoutPage() {
                     type="text"
                     name="firstName"
                     id="firstName"
-                    className=" outline-none max-w-[150px] border-[1px] border-[#DDC596] px-[16px] py-[10px] rounded-[6px]  "
+                    className=" outline-none w-100px  w-full border-[1px] border-[#DDC596] px-[16px] py-[10px] rounded-[6px]  "
+                  />
+                  <MdOutlineDateRange
+                    size={20}
+                    className="absolute end-2 top-9 "
                   />
                 </div>
-                <div>
+                <div className="relative">
                   <label htmlFor="firstName" className="label-input">
                     CVV
                   </label>
+                  <CiLock
+                    size={20}
+                    className="absolute right-2 bottom-[14px]"
+                  />
                   <input
                     type="text"
                     name="firstName"
                     id="firstName"
-                    className=" outline-none max-w-[150px] border-[1px] border-[#DDC596] px-[16px] py-[10px] rounded-[6px]  "
+                    className=" outline-none w-100px w-full border-[1px] border-[#DDC596] px-[16px] py-[10px] rounded-[6px]  "
                   />
                 </div>
               </div>
-              <div></div>
             </div>
+            <div className="flex flex-col gap-2 border-b-[1px]  py-4">
+              <div className="flex justify-between items-center">
+                <p>Sub Total</p>
+                <p>$2115.00</p>
+              </div>
+              <div className="flex justify-between items-center ">
+                <p>Task(10%)</p>
+                <p>$54.00</p>
+              </div>
+              <div className="flex justify-between items-center">
+                <p>Shipping</p>
+                <p>$$0.00</p>
+              </div>
+            </div>
+            <div className="flex justify-between items-center">
+              <p>Total</p>
+              <p>$2169.00</p>
+            </div>
+            <button className="button-secondary text-white w-full">
+              Place Order
+            </button>
           </form>
         </div>
-        <div className="p-4 flex flex-col gap-5  border-[1px] border-[#DDC596] col-span-2  rounded-[10px]">
-          <h3 className="font-medium text-[24px]">Delivery Information</h3>
-          <form className="grid gap-3 grid-cols-2">
+        <div className="p-4 flex flex-col gap-8  border-[1px] border-[#DDC596] col-span-2  rounded-[10px]">
+          <h3 className="font-medium text-[24px] pt-4 pb-3">
+            Delivery Information
+          </h3>
+          <form className="grid gap-3 grid-cols-1 md:grid-cols-2">
             <div>
               <label htmlFor="firstName" className="label-input">
                 First Name
@@ -183,7 +213,7 @@ export default function CheckoutPage() {
                 type="text"
                 name="firstName"
                 id="firstName"
-                className="in-design  "
+                className="in-design"
               />
             </div>
             <div className="">
@@ -206,14 +236,14 @@ export default function CheckoutPage() {
 
 function CheclOutProduct({ product }) {
   return (
-    <li className="flex gap-4 w-full border-b-[1px] py-5 border-[#DDC596] ">
+    <li className="flex gap-2 md:gap-4 w-full border-b-[1px] py-5 border-[#DDC596] ">
       <img
         src={product.image}
         alt={product.product}
         className="max-w-[120px] max-h-[120px]"
       />
       <div className="flex justify-between w-full font-medium test-[20px]">
-        <h3>{product.product}</h3>
+        <h3 className="w-[100px] sm:w-full">{product.product}</h3>
         <p>${product.price}</p>
       </div>
     </li>

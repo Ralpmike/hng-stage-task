@@ -2,7 +2,7 @@ import { productsCollections } from "../products";
 
 export default function ProductCollections() {
   return (
-    <div className="px-5">
+    <div className="px-5" id="collections">
       <div>
         <h2 className="sub-h2-style text-center">
           Browse Through Our Collections

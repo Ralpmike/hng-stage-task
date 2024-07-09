@@ -4,6 +4,7 @@ import {
   FaLinkedinIn,
   FaYoutube,
 } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -20,24 +21,12 @@ export default function Footer() {
       <div className="flex gap-[14px] md:gap-4 flex-col-reverse  md:flex-row  ">
         <ul className="flex flex-col gap-4 font-krub-font text-[14px] xl:mr-6">
           <label className="label-footer ">Link</label>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Products</li>
-        </ul>
-
-        <ul className="flex flex-col gap-4 font-krub-font text-[14px] xl:mr-6">
-          <label className="label-footer "> Categories</label>
-          <li>Organic food products</li>
-          <li>Eco-friendly household products</li>
-          <li>Clothing and textiles</li>
-          <li>Reusable eco-friendly products</li>
-        </ul>
-
-        <ul className="flex flex-col gap-4 font-krub-font text-[14px]">
-          <label className="label-footer ">Resources</label>
-          <li>Privacy policy</li>
-          <li>Terms and conditions</li>
+          <li>
+            <NavLink to="/"> Home</NavLink>
+          </li>
+          <li>
+            <a href="#collections">Products</a>
+          </li>
         </ul>
 
         <div className="flex gap-3 text-[#00522A] mx-auto md:mx-0 max-w-[13.5rem] mb-4 md:mb-0">
