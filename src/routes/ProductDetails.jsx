@@ -84,17 +84,17 @@ export default function ProductDetails() {
             src={
               singleProduct?.photos?.[0]?.url
                 ? `https://api.timbu.cloud/images/${singleProduct.photos[0].url}`
-                : "" // Placeholder or default image
+                : ""
             }
             alt={singleProduct?.id}
-            className="max-w-full w-[548px] max-h-[696px]"
+            className="max-w-full rounded-lg w-[548px] max-h-[696px]"
           />
           <div className="flex flex-wrap md:flex-nowrap justify-center md:justify-normal max-w-full gap-5 ">
             <img
               src={
                 singleProduct?.photos?.[0]?.url
                   ? `https://api.timbu.cloud/images/${singleProduct.photos[0].url}`
-                  : "" // Placeholder or default image
+                  : ""
               }
               alt={singleProduct?.id}
               className="productDetialsImg "
@@ -103,7 +103,7 @@ export default function ProductDetails() {
               src={
                 singleProduct?.photos?.[0]?.url
                   ? `https://api.timbu.cloud/images/${singleProduct.photos[0].url}`
-                  : "" // Placeholder or default image
+                  : ""
               }
               alt={singleProduct?.id}
               className="productDetialsImg"
@@ -112,7 +112,7 @@ export default function ProductDetails() {
               src={
                 singleProduct?.photos?.[0]?.url
                   ? `https://api.timbu.cloud/images/${singleProduct.photos[0].url}`
-                  : "" // Placeholder or default image
+                  : ""
               }
               alt={singleProduct?.id}
               className="productDetialsImg"
@@ -121,7 +121,7 @@ export default function ProductDetails() {
               src={
                 singleProduct?.photos?.[0]?.url
                   ? `https://api.timbu.cloud/images/${singleProduct.photos[0].url}`
-                  : "" // Placeholder or default image
+                  : ""
               }
               alt={singleProduct?.id}
               className="productDetialsImg"

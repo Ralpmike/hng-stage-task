@@ -80,7 +80,7 @@ export default function CheckoutPage() {
               </div>
               <div>
                 <label htmlFor="firstName" className="label-input">
-                  Cardholder Name
+                  Card Number
                 </label>
                 <input
                   type="text"
@@ -95,15 +95,15 @@ export default function CheckoutPage() {
                     Expiry Date
                   </label>
                   <input
-                    type="text"
+                    type="date"
                     name="firstName"
                     id="firstName"
-                    className=" outline-none w-100px  w-full border-[1px] border-[#DDC596] px-[16px] py-[10px] rounded-[6px]  "
+                    className=" outline-none w-100px  w-full border-[1px] border-[#DDC596] px-[10px] py-[10px] rounded-[6px]  "
                   />
-                  <MdOutlineDateRange
+                  {/* <MdOutlineDateRange
                     size={20}
                     className="absolute end-2 top-9 "
-                  />
+                  /> */}
                 </div>
                 <div className="relative">
                   <label htmlFor="firstName" className="label-input">
@@ -249,7 +249,7 @@ function CheclOutProduct({ product }) {
           <h3 className="w-[100px] sm:w-full font-medium">{product?.name}</h3>
           <p className="max-w-[300px] text-[14px]">{product?.description}</p>
         </div>
-        <p>${product.price}</p>
+        <p>${product?.current_price[0].NGN}</p>
       </div>
     </li>
   );

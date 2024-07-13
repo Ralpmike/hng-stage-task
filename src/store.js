@@ -31,8 +31,6 @@ export const useStore = create((set) => ({
     )
   })),
 
-  timbuProducts: [],
-  setTimbuProducts: (product) => set((state) => { timbuProducts: [...state.timbuProducts, product] }),
 }));
 
 

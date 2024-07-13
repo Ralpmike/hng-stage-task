@@ -1,4 +1,4 @@
-import { NavLink, redirect, useNavigate } from "react-router-dom";
+import { Link, NavLink, redirect, useNavigate } from "react-router-dom";
 
 import { CiSearch, CiSquareMinus } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
@@ -31,7 +31,7 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
   const cartProducts = useStore((state) => state.cartProducts);
 
   const totalPrice = cartProducts.reduce(
-    (acc, product) => acc + product.price,
+    (acc, product) => acc + product.current_price[0]?.NGN * product.quantity,
     0
   );
 
@@ -42,9 +42,11 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
         {menuOpen ? <FaTimes size={24} /> : <FaBars size={20} />}
       </button>
 
-      <h1 className="font-my-custom-font-head mx-auto text-center 1md:mx-0 text-[1.3rem]  md:text-[2rem] ">
-        Nature&#39;s Bounty
-      </h1>
+      <Link to={"/"}>
+        <h1 className="font-my-custom-font-head mx-auto text-center 1md:mx-0 text-[1.3rem]  md:text-[2rem] ">
+          Nature&#39;s Bounty
+        </h1>
+      </Link>
 
       <div className="hidden 1md:block">
         <ul className="flex gap-[1.5rem]  font-medium font-krub-font items-center">
@@ -169,7 +171,7 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
           <div className="flex justify-between py-5 font-krub-font items-center border-y-2 border-y-[#DDC596]">
             <p className="text-[1rem] font-normal">Subtotal:</p>
             <h3 className="text-[20px] font-[600]">
-              {cartProducts.length <= 0 ? "$0.00" : `$${totalPrice}`}
+              {cartProducts.length <= 0 ? "$0.00" : `${totalPrice}`}
             </h3>
           </div>
           {/* <div className="w-full"> */}
@@ -207,12 +209,29 @@ function Cart({ product }) {
               {product?.name}
             </h3>{" "}
             <span className="ml-auto font-semibold absolute right-6">
-              ${product.price}
+              ${product.current_price[0]?.NGN}
             </span>
           </div>
           {/* <div className=" "> */}
           <div className="gap-12 md:gap-[200px] relative flex justify-between ">
-            <div>
+            <div className="flex gap-4 items-center">
+              <div className="flex gap-[44px] justify-center bg-[#F9FAFB] font-medium items-center border-[1px] border-[#DDC596] px-2 rounded-lg w-[127px] h-[40px]">
+                <button
+                  className="w-6 h-6 text-[#1C2320] rounded-lg  border-[#DDC596] "
+                  onClick={() => decreaseQuantity(product.id)}
+                >
+                  -
+                </button>
+                <p>{product.quantity < 1 ? 1 : product.quantity}</p>
+                <button
+                  className="w-6 h-6  text-[#1C2320] border-[#DDC596] "
+                  onClick={() => increaseQuantity(product.id)}
+                >
+                  +
+                </button>
+              </div>
+            </div>
+            {/* <div>
               <FaPlus
                 className="absolute cursor-pointer inset-9 left-[50%] top-3 right-[54%]  md:left-[26%] md:top-3 "
                 onClick={() => increaseQuantity(product.id)}
@@ -224,7 +243,8 @@ function Cart({ product }) {
                 className="absolute cursor-pointer inset-9  top-3 md:left-5 md:top-3  md:inset-x-1"
                 onClick={() => decreaseQuantity(product.id)}
               />
-            </div>
+            </div> */}
+
             <button
               className="w-[100%] flex justify-end items-center "
               onClick={() => removeFromCart(product.id)}

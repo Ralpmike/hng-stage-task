@@ -94,14 +94,16 @@ function PopularProductCard({ product }) {
   };
 
   console.log("photoUrl: ", product.photos[0].url.split("/")[1]);
+  const photoUrl =
+    product.photos && product.photos.length > 0 ? product.photos[0].url : "";
 
   return (
     <div className="grid gap-3 hover:border-2 hover:border-[#B15818] p-2 rounded-[10px] cursor-pointer transition-all ease-in">
       <Link to={`/productsdetails/${product.id}`}>
         <img
-          src={`https://api.timbu.cloud/images/${product?.photos[0]?.url}`}
+          src={`https://api.timbu.cloud/images/${photoUrl}`}
           alt={product.name}
-          className="w-full object-cover"
+          className="w-full object-cover rounded-[10px]"
         />
       </Link>
       <div className="flex items-center justify-between gap-2">
