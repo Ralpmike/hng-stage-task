@@ -11,7 +11,7 @@ import { useState } from "react";
 
 // import axios from "axios";
 
-export default function PopularProducts({ timbuData }) {
+export default function PopularProducts({ timbuData = [] }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(8);
 

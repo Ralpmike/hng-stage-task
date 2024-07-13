@@ -20,7 +20,7 @@ export default function App() {
 
         const products = response.data.items; // Extract the data from the response
         setTimbuData(products);
-        setTimbuProducts(products);
+        // setTimbuProducts(products);
       } catch (err) {
         console.error("Error:", err); // Log any errors
         setError(err);
