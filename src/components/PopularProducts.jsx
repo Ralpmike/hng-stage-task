@@ -25,7 +25,7 @@ export default function PopularProducts() {
         const response = await axiosInstance.get("/products");
 
         const products = response.data.items; // Extract the data from the response
-        setTimbuData(products);
+        setTimbuData(products || []);
         // setTimbuProducts(products);
       } catch (err) {
         console.error("Error:", err); // Log any errors
@@ -40,7 +40,7 @@ export default function PopularProducts() {
 
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
-  const currentPosts = timbuData.slice(firstPostIndex, lastPostIndex);
+  const currentPosts = timbuData?.slice(firstPostIndex, lastPostIndex) || [];
 
   console.log("Timbu Products:", timbuProducts);
 
