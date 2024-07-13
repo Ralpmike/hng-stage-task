@@ -4,16 +4,37 @@ import CartButton from "./reuseables/CartButton";
 import { CiShoppingCart } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import { useStore } from "../store";
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-
+import axiosInstance from "../utils/axiosConfig";
+import { useEffect, useState } from "react";
+import { useStore } from "../store";
 // import axios from "axios";
 
-export default function PopularProducts({ timbuData = [] }) {
+export default function PopularProducts() {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(8);
+  const [timbuData, setTimbuData] = useState([]);
+  const [error, setError] = useState(null);
+  // const setTimbuProducts = useStore((state) => state.setTimbuProducts);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      // const setTimbuProducts = useStore((state) => state.setTimbuProducts);
+      try {
+        const response = await axiosInstance.get("/products");
+
+        const products = response.data.items; // Extract the data from the response
+        setTimbuData(products);
+        // setTimbuProducts(products);
+      } catch (err) {
+        console.error("Error:", err); // Log any errors
+        setError(err);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const timbuProducts = useStore((state) => state.timbuProducts);
 
