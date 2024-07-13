@@ -40,6 +40,7 @@ export default function PopularProducts() {
 
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = timbuData.slice(firstPostIndex, lastPostIndex);
 
   console.log("Timbu Products:", timbuProducts);
 
@@ -57,7 +58,7 @@ export default function PopularProducts() {
       </div>
 
       <div className="grid grid-cols-1 grid-rows-subgrid  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        {timbuData.slice(firstPostIndex, lastPostIndex).map((product) => (
+        {currentPosts.map((product) => (
           <PopularProductCard key={product.id} product={product} />
         ))}
       </div>
@@ -105,7 +106,7 @@ function PopularProductCard({ product }) {
       </Link>
       <div className="flex items-center justify-between gap-2">
         <p className="product-caption">{product.name}</p>
-        <p className="price-style">${}</p>
+        <p className="price-style">${product.current_price[0]?.NGN}</p>
       </div>
       <div>
         {isInCart ? (
