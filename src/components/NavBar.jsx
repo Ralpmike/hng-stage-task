@@ -15,6 +15,10 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
+  // const timbuProducts = useStore((state) => state.timbuProducts);
+
+  // console.log("Timbu Products", timbuProducts);
+
   const handleRedirect = () => {
     navigate("/checkout");
     onHandleToggleCart();
@@ -32,13 +36,13 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
   );
 
   return (
-    <nav className=" bg-defaultbg-color border-[#DDC596] px-4 md:px-8 md:gap-5 h-[80px] border-b-[.0625rem]  lg:gap-8 w-full mx-auto flex justify-evenly items-center sticky top-0 z-30 ">
+    <nav className=" mb-[20px] bg-defaultbg-color border-[#DDC596] px-4 md:px-8 md:gap-5 h-[80px] border-b-[.0625rem]    flex justify-evenly items-center sticky top-0 z-30 ">
       {/* <div className="flex px-3 lg:gap-8 md:px-12 md:p-0  xl:gap-10 items-center h-[5rem] md:mx-auto border-2"> */}
       <button onClick={toggleMenu} className=" 1md:hidden mr-auto ">
         {menuOpen ? <FaTimes size={24} /> : <FaBars size={20} />}
       </button>
 
-      <h1 className="font-my-custom-font-head mx-auto text-center 1md:mx-0 text-[1.25rem] md:text-[1.5rem] lg:text-[1.6rem] xl:[2rem]">
+      <h1 className="font-my-custom-font-head mx-auto text-center 1md:mx-0 text-[1.3rem]  md:text-[2rem] ">
         Nature&#39;s Bounty
       </h1>
 
@@ -187,21 +191,20 @@ function Cart({ product }) {
   const increaseQuantity = useStore((state) => state.increaseQuantity);
   const decreaseQuantity = useStore((state) => state.decreaseQuantity);
 
-  // const numberOfItems = product.quantity;
   return (
     <div>
       {/* {cartProducts.map((product) => () => { */}
       <li className="flex flex-col md:flex-row py-6 gap-4 gap-y-12  w-full transition-all ease-in duration-[3000]">
         <img
-          src={product.image}
-          alt="demo"
+          src={`https://api.timbu.cloud/images/${product?.photos[0]?.url}`}
+          alt={product?.name}
           className="max-w-[210px] max-h-[190px]"
         />
 
         <div className="flex flex-col gap-2 justify-evenly">
           <div className="flex justify-between  font-krub-font font-medium">
             <h3 className="txet-[14px] md:text-lg max-w-[160px]">
-              {product.product}
+              {product?.name}
             </h3>{" "}
             <span className="ml-auto font-semibold absolute right-6">
               ${product.price}

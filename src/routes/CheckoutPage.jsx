@@ -240,12 +240,15 @@ function CheclOutProduct({ product }) {
   return (
     <li className="flex gap-2 md:gap-4 w-full border-b-[1px] py-5 border-[#DDC596] ">
       <img
-        src={product.image}
-        alt={product.product}
+        src={`https://api.timbu.cloud/images/${product?.photos[0]?.url}`}
+        alt={product?.id}
         className="max-w-[120px] max-h-[120px]"
       />
       <div className="flex justify-between w-full font-medium test-[20px]">
-        <h3 className="w-[100px] sm:w-full">{product.product}</h3>
+        <div className="flex flex-col gap-4">
+          <h3 className="w-[100px] sm:w-full font-medium">{product?.name}</h3>
+          <p className="max-w-[300px] text-[14px]">{product?.description}</p>
+        </div>
         <p>${product.price}</p>
       </div>
     </li>

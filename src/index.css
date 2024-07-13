@@ -33,6 +33,10 @@
   @apply text-white text-[18px] font-medium  leading-6 font-my-custom-font-head;
 }
 
+.productDetialsImg {
+  @apply md:w-[122px] w-[84px] h-[84px] md:h-[7.5rem] rounded-[10px] border-[1px] border-[#DDC596] max-w-full;
+}
+
 @keyframes slide {
   0% {
     transform: translateX(0);
@@ -92,15 +96,3 @@ html {
 .remove-btn {
   @apply bg-[#25372E] rounded-[8px] px-8 py-4 hover:bg-[#00522A] hover:border-[2px] hover:border-b-[#001B0E];
 }
-
-/* a {
-  @apply px-[12px] py-[8px] rounded-lg;
-} */
-
-/* .active {
-  @apply bg-[#A7D0A6]  px-[8px] py-[4px] rounded-lg text-[14px];
-} */
-
-/* a.active {
-  background-color: #a7d0a6;
-} */

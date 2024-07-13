@@ -6,7 +6,7 @@ export default function SectionOne() {
       <h5 className="text-[#572A00] my-2 text-[9px] sm:text-[.625rem] font-krub-font py-2 px-4 bg-[#FFE6CE]  rounded-2xl">
         🏆 2023 & 2024 AWARD WINNING ECO-FRIENDLY STORE
       </h5>
-      <h2 className="text-[32px]  font-medium leading-[36.8px] md:px-5 text-center md:leading-[73px]  md:text-[64px] lg:leading-[73px]">
+      <h2 className="text-[32px] max-w-[77.4375rem]  font-medium leading-[36.8px] md:px-5 text-center md:leading-[73px]  md:text-[64px] lg:leading-[73px]">
         Enjoy Sustainable and{" "}
         <span className="text-[#004824] ">Healthy Living</span> with Our
         Eco-Friendly Products

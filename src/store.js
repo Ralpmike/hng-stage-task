@@ -29,5 +29,15 @@ export const useStore = create((set) => ({
     cartProducts: state.cartProducts.map((product) =>
       product.id === productId && product.quantity > 0 ? { ...product, quantity: product.quantity - 1 } : product
     )
-  }))
+  })),
+
+  timbuProducts: [],
+  setTimbuProducts: (product) => set((state) => { timbuProducts: [...state.timbuProducts, product] }),
 }));
+
+
+
+
+
+
+

@@ -5,6 +5,7 @@ import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/root";
 import CheckoutPage from "./routes/CheckoutPage";
+import ProductDetails from "./routes/ProductDetails";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <CheckoutPage />,
+      },
+      {
+        path: "/productsdetails/:id",
+        element: <ProductDetails />,
       },
     ],
   },
