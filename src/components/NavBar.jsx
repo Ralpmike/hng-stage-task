@@ -15,10 +15,6 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
-  // const timbuProducts = useStore((state) => state.timbuProducts);
-
-  // console.log("Timbu Products", timbuProducts);
-
   const handleRedirect = () => {
     navigate("/checkout");
     onHandleToggleCart();
@@ -31,13 +27,15 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
   const cartProducts = useStore((state) => state.cartProducts);
 
   const totalPrice = cartProducts.reduce(
-    (acc, product) => acc + product.current_price[0]?.NGN * product.quantity,
+    (acc, product) =>
+      acc +
+      (parseFloat(product.current_price[0]?.NGN) || 0) *
+        (product.quantity || 0),
     0
   );
 
   return (
     <nav className=" mb-[20px] bg-defaultbg-color border-[#DDC596] px-4 md:px-8 md:gap-5 h-[80px] border-b-[.0625rem]    flex justify-evenly items-center sticky top-0 z-30 ">
-      {/* <div className="flex px-3 lg:gap-8 md:px-12 md:p-0  xl:gap-10 items-center h-[5rem] md:mx-auto border-2"> */}
       <button onClick={toggleMenu} className=" 1md:hidden mr-auto ">
         {menuOpen ? <FaTimes size={24} /> : <FaBars size={20} />}
       </button>
@@ -171,7 +169,7 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
           <div className="flex justify-between py-5 font-krub-font items-center border-y-2 border-y-[#DDC596]">
             <p className="text-[1rem] font-normal">Subtotal:</p>
             <h3 className="text-[20px] font-[600]">
-              {cartProducts.length <= 0 ? "$0.00" : `${totalPrice}`}
+              {cartProducts.length <= 0 ? "$0.00" : `$${totalPrice.toFixed(2)}`}
             </h3>
           </div>
           {/* <div className="w-full"> */}
@@ -209,7 +207,9 @@ function Cart({ product }) {
               {product?.name}
             </h3>{" "}
             <span className="ml-auto font-semibold absolute right-6">
-              ${product.current_price[0]?.NGN}
+              $
+              {(parseFloat(product.current_price[0]?.NGN) || 0) *
+                (product.quantity || 0).toFixed(2)}
             </span>
           </div>
           {/* <div className=" "> */}
@@ -231,20 +231,6 @@ function Cart({ product }) {
                 </button>
               </div>
             </div>
-            {/* <div>
-              <FaPlus
-                className="absolute cursor-pointer inset-9 left-[50%] top-3 right-[54%]  md:left-[26%] md:top-3 "
-                onClick={() => increaseQuantity(product.id)}
-              />
-              <span className="bg-white inline-block w-[7.9375rem] p-2 pl-16 rounded-lg">
-                {product.quantity < 1 ? 1 : product.quantity}
-              </span>
-              <FaMinus
-                className="absolute cursor-pointer inset-9  top-3 md:left-5 md:top-3  md:inset-x-1"
-                onClick={() => decreaseQuantity(product.id)}
-              />
-            </div> */}
-
             <button
               className="w-[100%] flex justify-end items-center "
               onClick={() => removeFromCart(product.id)}

@@ -34,7 +34,7 @@
 }
 
 .productDetialsImg {
-  @apply md:w-[122px] w-[84px] h-[84px] md:h-[7.5rem] rounded-[10px] border-[1px] border-[#DDC596] max-w-full;
+  @apply w-[84px] h-[84px] md:h-[7.5rem] rounded-[10px] border-[1px] border-[#DDC596] max-w-full;
 }
 
 @keyframes slide {

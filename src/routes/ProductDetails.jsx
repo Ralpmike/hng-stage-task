@@ -13,14 +13,12 @@ import axiosInstance from "../utils/axiosConfig";
 export default function ProductDetails() {
   const { id } = useParams();
   const [singleProduct, setSingleProduct] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   const [error, setError] = useState(null);
   console.log("Product ID:", id);
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
       try {
         const res = await axiosInstance.get(`/products/${id}`);
 
@@ -28,8 +26,6 @@ export default function ProductDetails() {
         setSingleProduct(fetchResult);
       } catch (err) {
         setError(err.message);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -74,7 +70,7 @@ export default function ProductDetails() {
   console.log("Product:", product);
   // console.log("Product:", product);
   return (
-    <div className="flex flex-col gap-4 md:px-[121px] px-[17px] font-krub-font">
+    <div className="flex flex-col gap-4 lg:px-[121px] px-[17px] font-krub-font">
       <h1 className="font-krub-font font-medium  text-[.875rem] text-[#004824] ">
         {singleProduct?.name}
       </h1>
@@ -89,7 +85,7 @@ export default function ProductDetails() {
             alt={singleProduct?.id}
             className="max-w-full rounded-lg w-[548px] max-h-[696px]"
           />
-          <div className="flex flex-wrap md:flex-nowrap justify-center md:justify-normal max-w-full gap-5 ">
+          <div className="flex flex-wrap justify-center md:justify-normal max-w-full gap-5 ">
             <img
               src={
                 singleProduct?.photos?.[0]?.url
