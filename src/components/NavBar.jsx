@@ -205,9 +205,14 @@ function Cart({ product }) {
               {product?.name}
             </h3>{" "}
             <span className="ml-auto font-semibold absolute right-6">
+              {product?.current_price[0]
+                ? (parseFloat(product.current_price[0]?.NGN) || 0) *
+                  (product.quantity || 0).toFixed(2)
+                : (parseFloat(product?.current_price) || 0) *
+                  (product.quantity || 0).toFixed(2)}
               $
-              {(parseFloat(product.current_price[0]?.NGN) || 0) *
-                (product.quantity || 0).toFixed(2)}
+              {/* {(parseFloat(product.current_price[0]?.NGN) || 0) *
+                (product.quantity || 0).toFixed(2)} */}
             </span>
           </div>
           {/* <div className=" "> */}
