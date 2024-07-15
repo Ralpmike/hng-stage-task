@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 
-import { popularProducts } from "../products";
+// import { popularProducts } from "../products";
+import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ProductSize from "../components/reuseables/ProductSize";
 import ProductColor from "../components/reuseables/ProductColor";
@@ -16,6 +17,7 @@ export default function ProductDetails() {
   const setAddToCart = useStore((state) => state.setAddToCart);
 
   console.log("Product ID:", id);
+  console.log("Single Product:", singleProduct);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -197,7 +199,7 @@ export default function ProductDetails() {
               </div>
               <div className="flex gap-4 order-last md:order-none">
                 <button className="py-[8px] px-[16px] md:py-[16px] md:px-[32px] hover:bg-[#008042] bg-[#00522A] text-white rounded-lg">
-                  Buy Now
+                  <NavLink to="/checkout"> Buy Now</NavLink>
                 </button>
                 <button
                   className="py-[8px] px-[16px] md:py-[16px] md:px-[32px] border-[2px] hover:bg-[#DDC596] hover:text-white text-[#1D0E00] border-[#DDC596] rounded-lg "
