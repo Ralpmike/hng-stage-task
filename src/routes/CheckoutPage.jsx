@@ -9,6 +9,8 @@ export default function CheckoutPage() {
   const cartProducts = useStore((state) => state.cartProducts);
   const totalCost = useCartStore((state) => state.totalCost);
 
+  const CostWithTask = totalCost + (15 / 100) * totalCost;
+
   return (
     <div className="px-6 md:px-12 xl:px-[100px] mt-10 flex flex-col gap-4 font-krub-font">
       <div className="flex py-3">
@@ -143,7 +145,7 @@ export default function CheckoutPage() {
             <div className="flex justify-between items-center">
               <p className="font-normal text-[14px]">Total</p>
               <p className="font-medium text-[14px] text-[#2F3935]">
-                ${totalCost}
+                ${CostWithTask}
               </p>
             </div>
             <button className="button-secondary text-white w-full">
