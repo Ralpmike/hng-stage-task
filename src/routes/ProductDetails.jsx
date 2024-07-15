@@ -1,20 +1,20 @@
 import { useParams } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 
-// import { useStore } from "../store";
 import { popularProducts } from "../products";
 import { useEffect, useState } from "react";
 import ProductSize from "../components/reuseables/ProductSize";
 import ProductColor from "../components/reuseables/ProductColor";
 import { LuStore } from "react-icons/lu";
-// import axios from "axios";
 import axiosInstance from "../utils/axiosConfig";
+import { useStore } from "../store";
 
 export default function ProductDetails() {
   const { id } = useParams();
   const [singleProduct, setSingleProduct] = useState([]);
-
   const [error, setError] = useState(null);
+  const setAddToCart = useStore((state) => state.setAddToCart);
+
   console.log("Product ID:", id);
 
   useEffect(() => {
@@ -34,8 +34,9 @@ export default function ProductDetails() {
 
   console.log(error);
 
-  console.log("Single Product:", singleProduct);
   const [quantity, setQuantity] = useState(1);
+  const colors = ["#A4C8D7", "#221C49", "#475367", "#FBE2B7"];
+  const sizes = ["S", "M", "L", "XL"];
 
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
@@ -45,9 +46,6 @@ export default function ProductDetails() {
       setQuantity(quantity - 1);
     }
   };
-
-  const colors = ["#A4C8D7", "#221C49", "#475367", "#FBE2B7"];
-  const sizes = ["S", "M", "L", "XL"];
 
   const [selectSize, setSelectSize] = useState(sizes[0]);
 
@@ -61,14 +59,10 @@ export default function ProductDetails() {
     setSelectSize(size);
   };
 
-  const { productId } = useParams();
-  console.log("Product ID:", typeof productId);
+  const handleAddToCart = () => {
+    setAddToCart(singleProduct);
+  };
 
-  const product = popularProducts.find(
-    (product) => product.id === Number(productId)
-  );
-  console.log("Product:", product);
-  // console.log("Product:", product);
   return (
     <div className="flex flex-col gap-4 lg:px-[121px] px-[17px] font-krub-font">
       <h1 className="font-krub-font font-medium  text-[.875rem] text-[#004824] ">
@@ -83,7 +77,7 @@ export default function ProductDetails() {
                 : ""
             }
             alt={singleProduct?.id}
-            className="max-w-full rounded-lg w-[548px] max-h-[696px]"
+            className="max-w-full rounded-lg lg:w-[548px] max-h-[696px]"
           />
           <div className="flex flex-wrap justify-center md:justify-normal max-w-full gap-5 ">
             <img
@@ -207,7 +201,7 @@ export default function ProductDetails() {
                 </button>
                 <button
                   className="py-[8px] px-[16px] md:py-[16px] md:px-[32px] border-[2px] hover:bg-[#DDC596] hover:text-white text-[#1D0E00] border-[#DDC596] rounded-lg "
-                  // onClick={() => addToCart(product)}
+                  onClick={handleAddToCart}
                 >
                   Add to Cart
                 </button>

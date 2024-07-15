@@ -40,11 +40,9 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
         {menuOpen ? <FaTimes size={24} /> : <FaBars size={20} />}
       </button>
 
-      <Link to={"/"}>
-        <h1 className="font-my-custom-font-head mx-auto text-center 1md:mx-0 text-[1.3rem]  md:text-[2rem] ">
-          Nature&#39;s Bounty
-        </h1>
-      </Link>
+      <h1 className="font-my-custom-font-head mx-auto text-center 1md:mx-0 text-[1.3rem]  md:text-[2rem] ">
+        <Link to={"/"}>Nature&#39;s Bounty</Link>
+      </h1>
 
       <div className="hidden 1md:block">
         <ul className="flex gap-[1.5rem]  font-medium font-krub-font items-center">
