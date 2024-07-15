@@ -192,8 +192,11 @@ export default function ProductDetails() {
                     </button>
                   </div>
                   <p className="w-[139px] font-[600]">
-                    Only <span className="text-[#572A00]">12 Items</span> Left!
-                    Don&apos;t miss it
+                    Only{" "}
+                    <span className="text-[#572A00]">
+                      {singleProduct?.available_quantity}
+                    </span>{" "}
+                    Left! Don&apos;t miss it
                   </p>
                 </div>
               </div>
