@@ -3,9 +3,11 @@ import { NavLink } from "react-router-dom";
 import { useStore } from "../store";
 import { MdOutlineDateRange } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
+import { useCartStore } from "../store";
 
 export default function CheckoutPage() {
   const cartProducts = useStore((state) => state.cartProducts);
+  const totalCost = useCartStore((state) => state.totalCost);
 
   return (
     <div className="px-6 md:px-12 xl:px-[100px] mt-10 flex flex-col gap-4 font-krub-font">
@@ -126,7 +128,7 @@ export default function CheckoutPage() {
               <div className="flex justify-between items-center">
                 <p className="font-normal text-[14px]">Sub Total</p>
                 <p className="font-medium text-[14px] text-[#2F3935]">
-                  $2115.00
+                  ${totalCost}
                 </p>
               </div>
               <div className="flex justify-between items-center ">
@@ -135,12 +137,14 @@ export default function CheckoutPage() {
               </div>
               <div className="flex justify-between items-center">
                 <p className="font-normal text-[14px]">Shipping</p>
-                <p className="font-medium text-[14px] text-[#2F3935]">$$0.00</p>
+                <p className="font-medium text-[14px] text-[#2F3935]">$0.00</p>
               </div>
             </div>
             <div className="flex justify-between items-center">
               <p className="font-normal text-[14px]">Total</p>
-              <p className="font-medium text-[14px] text-[#2F3935]">$2169.00</p>
+              <p className="font-medium text-[14px] text-[#2F3935]">
+                ${totalCost}
+              </p>
             </div>
             <button className="button-secondary text-white w-full">
               Place Order

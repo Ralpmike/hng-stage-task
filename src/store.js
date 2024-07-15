@@ -37,5 +37,9 @@ export const useStore = create((set) => ({
 
 
 
-
-
+export const useCartStore = create((set) => ({
+  totalCost: 0,
+  setTotalCost: (cost) => set((state) => {
+    return { totalCost: state.totalCost + cost };
+  })
+}))

@@ -10,14 +10,18 @@ import { GoTrash } from "react-icons/go";
 import { RxCross2 } from "react-icons/rx";
 import { CiSquarePlus } from "react-icons/ci";
 import { useStore } from "../store";
+import { useCartStore } from "../store";
 
 export default function NavBar({ onHandleToggleCart, showCart }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
+  const setTotalCost = useCartStore((state) => state.setTotalCost);
+
   const handleRedirect = () => {
     navigate("/checkout");
     onHandleToggleCart();
+    setTotalCost(totalPrice);
   };
 
   const toggleMenu = () => {
@@ -29,10 +33,17 @@ export default function NavBar({ onHandleToggleCart, showCart }) {
   const totalPrice = cartProducts.reduce(
     (acc, product) =>
       acc +
-      (parseFloat(product.current_price[0]?.NGN) || 0) *
+      (product?.current_price[0]
+        ? parseFloat(product.current_price[0]?.NGN) || 0
+        : parseFloat(product?.current_price) || 0) *
         (product.quantity || 0),
     0
   );
+  // {
+  //   product?.current_price[0]
+  //     ? parseFloat(product.current_price[0]?.NGN) || 0
+  //     : parseFloat(product?.current_price) || 0;
+  // }
 
   return (
     <nav className=" mb-[20px] bg-defaultbg-color border-[#DDC596] px-4 md:px-8 md:gap-5 h-[80px] border-b-[.0625rem]    flex justify-evenly items-center sticky top-0 z-30 ">
