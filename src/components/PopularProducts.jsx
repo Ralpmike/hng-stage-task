@@ -146,19 +146,17 @@ const Pagination = ({
     <div className="flex gap-6 items-center justify-center">
       {pages.map((page, index) => {
         return (
-          <>
-            <button
-              key={index}
-              onClick={() => setCurrentPage(page)}
-              className={
-                page == currentPage
-                  ? "bg-[#DDC596] border-[1px] border-[#B15818] px-4 py-[10px] rounded-md"
-                  : ""
-              }
-            >
-              {page}
-            </button>
-          </>
+          <button
+            key={index}
+            onClick={() => setCurrentPage(page)}
+            className={
+              page == currentPage
+                ? "bg-[#DDC596] border-[1px] border-[#B15818] px-4 py-[10px] rounded-md"
+                : ""
+            }
+          >
+            {page}
+          </button>
         );
       })}
     </div>

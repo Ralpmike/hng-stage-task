@@ -179,14 +179,14 @@ export default function ProductDetails() {
                   <div className="flex gap-[44px] justify-center items-center border-[1px] border-[#DDC596] px-2 rounded-lg w-[204px] h-[64px]">
                     <button
                       className="w-6 h-6 text-[#1C2320]  border-[#DDC596] "
-                      onClickCapture={decrementQuantity}
+                      onClick={decrementQuantity}
                     >
                       -
                     </button>
                     <p>{quantity}</p>
                     <button
                       className="w-6 h-6  text-[#1C2320] border-[#DDC596] "
-                      onClickCapture={incrementQuantity}
+                      onClick={incrementQuantity}
                     >
                       +
                     </button>
@@ -199,7 +199,8 @@ export default function ProductDetails() {
               </div>
               <div className="flex gap-4 order-last md:order-none">
                 <button className="py-[8px] px-[16px] md:py-[16px] md:px-[32px] hover:bg-[#008042] bg-[#00522A] text-white rounded-lg">
-                  <NavLink to="/checkout"> Buy Now</NavLink>
+                  Buy Now
+                  {/* <NavLink to="/checkout"> Buy Now</NavLink> */}
                 </button>
                 <button
                   className="py-[8px] px-[16px] md:py-[16px] md:px-[32px] border-[2px] hover:bg-[#DDC596] hover:text-white text-[#1D0E00] border-[#DDC596] rounded-lg "

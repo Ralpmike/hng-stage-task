@@ -249,7 +249,12 @@ function CheclOutProduct({ product }) {
           <h3 className="w-[100px] sm:w-full font-medium">{product?.name}</h3>
           <p className="max-w-[300px] text-[14px]">{product?.description}</p>
         </div>
-        <p>${product?.current_price[0].NGN}</p>
+        <p>
+          $
+          {product?.current_price[0]
+            ? product?.current_price[0].NGN[0]
+            : product?.current_price}
+        </p>
       </div>
     </li>
   );
